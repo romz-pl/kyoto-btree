@@ -1,7 +1,7 @@
-set( TEST_NAME cachetest )
+set( TEST_NAME dirmgr )
 
 add_executable( ${TEST_NAME}
-    kccachetest.cc
+    kcdirmgr.cc
 )
 
 target_compile_options( ${TEST_NAME} PRIVATE ${ROMZ_CXX_FLAGS} )
