@@ -22,10 +22,7 @@ make -j5 || exit 1
 #
 # Run test
 #
-ctest --verbose
-# ctest
-#./tests/unita/unita
-#./tests/unitb/unitb
-#./tests/db/db
+#ctest --verbose
+ctest
 
 

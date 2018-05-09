@@ -17,7 +17,7 @@ add_subdirectory(3rdparty/googletest)
 
 add_subdirectory(src)
 
-#add_subdirectory(tests/unita)
+add_subdirectory(tests/cachetest)
 #add_subdirectory(tests/unitb)
 #add_subdirectory(tests/db)
 
