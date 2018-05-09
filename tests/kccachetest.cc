@@ -42,82 +42,42 @@ static int32_t procwicked(int64_t rnum, int32_t thnum, int32_t itnum,
                           int32_t opts, int64_t bnum, int64_t capcnt, int64_t capsiz, bool lv);
 static int32_t proctran(int64_t rnum, int32_t thnum, int32_t itnum,
                         int32_t opts, int64_t bnum, int64_t capcnt, int64_t capsiz, bool lv);
+static int run( const std::string& params );
+
+
+TEST( cachetest, all )
+{
+std::vector< std::string > param =
+{
+{ "cachetest order -etc -bnum 5000 10000" },
+{ "cachetest order -th 4 -bnum 5000 10000" }, 
+{ "cachetest order -th 4 -rnd -etc -bnum 5000 -capcnt 10000 10000" },
+{ "cachetest order -th 4 -rnd -etc -bnum 5000 -capsiz 10000 10000" },
+{ "cachetest order -th 4 -rnd -etc -tran -tc -bnum 5000 -capcnt 10000 10000" },
+{ "cachetest wicked -bnum 5000 10000" },
+{ "cachetest wicked -th 4 -it 4 -tc -bnum 5000 -capcnt 10000 10000" },
+{ "cachetest tran -bnum 5000 10000" },
+{ "cachetest tran -th 2 -it 4 -tc -bnum 5000 10000" }
+};
+
+    for( auto v : param )
+    {
+        std::cout << "**************" << v << "\n" << std::flush;
+        ASSERT_TRUE( run( v ) == 0 );
+    }
+}
+
+int run( const std::string& params )
+{
+
+    char *command_line = new char[params.size() + 1];
+    strcpy( command_line, params.c_str() );
+    SPLI_ARGS;
+    const int ret = cachetest( argc, argv );
+    delete [] command_line;
+    return ret;
+}
                                          
-
-
-TEST( cachetest, A )
-{
-    char command_line[] = "cachetest order -etc -bnum 5000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, B )
-{
-    char command_line[] = "cachetest order -th 4 -bnum 5000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, C )
-{
-    char command_line[] = "cachetest order -th 4 -rnd -etc -bnum 5000 -capcnt 10000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, D )
-{
-    char command_line[] = "cachetest order -th 4 -rnd -etc -bnum 5000 -capsiz 10000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, E )
-{
-    char command_line[] = "cachetest order -th 4 -rnd -etc -tran -tc -bnum 5000 -capcnt 10000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, F )
-{
-    char command_line[] = "cachetest wicked -bnum 5000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, G )
-{
-    char command_line[] = "cachetest wicked -th 4 -it 4 -tc -bnum 5000 -capcnt 10000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, H )
-{
-    char command_line[] = "cachetest tran -bnum 5000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-TEST( cachetest, I )
-{
-    char command_line[] = "cachetest tran -th 2 -it 4 -tc -bnum 5000 10000";
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    ASSERT_TRUE( ret == 0 );
-}
-
-
 
 // main routine
 static int cachetest(int argc, char** argv) 
