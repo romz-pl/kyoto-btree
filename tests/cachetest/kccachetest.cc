@@ -69,7 +69,6 @@ int main(int argc, char** argv) {
     }
     oprintf("\n\n");
   }
-  assert( rv ==  0 );
   return rv;
 }
 

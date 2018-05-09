@@ -12,18 +12,17 @@
  * If not, see <http://www.gnu.org/licenses/>.
  *************************************************************************************************/
 
-#include "gtest/gtest.h"
+
 #include <kcdirdb.h>
 #include "cmdcommon.h"
-#include "split_args.h"
 
 
 // global variables
-static const char* g_progname;                  // program name
+const char* g_progname;                  // program name
 
 
 // function prototypes
-int dirmgr(int argc, char** argv);
+int main(int argc, char** argv);
 static void usage();
 static void dberrprint(kc::BasicDB* db, const char* info);
 static int32_t runcreate(int argc, char** argv);
@@ -62,76 +61,10 @@ static int32_t procremovebulk(const char* path, int32_t oflags,
 static int32_t procgetbulk(const char* path, int32_t oflags,
                            const std::vector<std::string>& keys, bool px);
 static int32_t proccheck(const char* path, int32_t oflags);
-static int run( const std::string& params );
-
-TEST( dirmgr, all )
-{
-std::vector< std::string > param =
-{
-{ "dirmgr inform -st casket" },
-// { "dirmgr set -add casket duffy 1231" }, This test deos not pass!!
-{ "dirmgr set -add casket micky 0101" },
-{ "dirmgr set casket fal 1007" },
-{ "dirmgr set casket mikio 0211" },
-{ "dirmgr set casket natsuki 0810" },
-{ "dirmgr set casket micky \"\"" },
-{ "dirmgr set -app casket duffy kukuku" },
-{ "dirmgr remove casket micky" },
-// { "dirmgr list -pv casket > check.out" },
-{ "dirmgr set casket ryu 1" },
-{ "dirmgr set casket ken 2" },
-{ "dirmgr remove casket duffy" },
-{ "dirmgr set casket ryu syo-ryu-ken" },
-{ "dirmgr set casket ken tatsumaki-senpu-kyaku" },
-{ "dirmgr set -inci casket int 1234" },
-{ "dirmgr set -inci casket int 5678" },
-{ "dirmgr set -incd casket double 1234.5678" },
-{ "dirmgr set -incd casket double 8765.4321" },
-{ "dirmgr get casket mikio" },
-{ "dirmgr get casket ryu" },
-// { "dirmgr import casket lab/numbers.tsv" },
-// { "dirmgr list -pv -px casket > check.out" },
-// { "dirmgr copy casket casket-para" },
-// { "dirmgr dump casket check.out" },
-// { "dirmgr load -otr casket check.out" },
-{ "dirmgr setbulk casket aa aaa bb bbb cc ccc dd ddd" },
-{ "dirmgr removebulk casket aa bb zz" },
-{ "dirmgr getbulk casket aa bb cc dd" },
-{ "dirmgr check -onr casket" },
-{ "dirmgr inform -st casket" },
-{ "dirmgr create -otr -otl -onr -tc casket" },
-// { "dirmgr import casket < lab/numbers.tsv" },
-{ "dirmgr set casket mikio kyotocabinet" },
-{ "dirmgr set -app casket tako ikaunini" },
-{ "dirmgr set -app casket mikio kyototyrant" },
-{ "dirmgr set -app casket mikio kyotodystopia" },
-//{ "dirmgr get -px casket mikio > check.out" },
-//{ "dirmgr list casket > check.out" },
-{ "dirmgr check -onr casket" },
-{ "dirmgr clear casket" }
-};
-
-    for( auto v : param )
-    {
-        std::cout << "**************" << v << "\n" << std::flush;
-        ASSERT_TRUE( run( v ) == 0 );
-    }
-}
-
-int run( const std::string& params )
-{
-
-    char *command_line = new char[params.size() + 1];
-    strcpy( command_line, params.c_str() );
-    SPLI_ARGS;
-    const int ret = dirmgr( argc, argv );
-    delete [] command_line;
-    return ret;
-}
 
 
 // main routine
-int dirmgr(int argc, char** argv) {
+int main(int argc, char** argv) {
   g_progname = argv[0];
   kc::setstdiobin();
   if (argc < 2) usage();
