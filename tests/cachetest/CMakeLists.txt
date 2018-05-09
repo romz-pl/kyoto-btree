@@ -1,10 +1,7 @@
-set( TEST_NAME kyoto-test )
+set( TEST_NAME cachetest )
 
 add_executable( ${TEST_NAME}
-    cmdcommon.cpp
     kccachetest.cc
-    kcdirmgr.cc
-    main.cpp
 )
 
 target_compile_options( ${TEST_NAME} PRIVATE ${ROMZ_CXX_FLAGS} )
@@ -23,5 +20,5 @@ target_link_libraries( ${TEST_NAME}
     -ldl
 )
 
-add_test( NAME ${TEST_NAME} COMMAND ${TEST_NAME} )
+# add_test( NAME ${TEST_NAME} COMMAND ${TEST_NAME} )
 

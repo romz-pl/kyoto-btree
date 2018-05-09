@@ -12,21 +12,18 @@
  * If not, see <http://www.gnu.org/licenses/>.
  *************************************************************************************************/
 
-#include "gtest/gtest.h"
 #include <kccachedb.h>
 #include "cmdcommon.h"
-#include "split_args.h"
 
 
 // global variables
-static const char* g_progname;                  // program name
-static uint32_t g_randseed;                     // random seed
-static int64_t g_memusage;                      // memory usage
+const char* g_progname;                  // program name
+uint32_t g_randseed;                     // random seed
+int64_t g_memusage;                      // memory usage
 
 
 // function prototypes
-
-static int cachetest(int argc, char** argv);
+int main(int argc, char** argv);
 static void usage();
 static void dberrprint(kc::BasicDB* db, int32_t line, const char* func);
 static void dbmetaprint(kc::BasicDB* db, bool verbose);
@@ -42,46 +39,10 @@ static int32_t procwicked(int64_t rnum, int32_t thnum, int32_t itnum,
                           int32_t opts, int64_t bnum, int64_t capcnt, int64_t capsiz, bool lv);
 static int32_t proctran(int64_t rnum, int32_t thnum, int32_t itnum,
                         int32_t opts, int64_t bnum, int64_t capcnt, int64_t capsiz, bool lv);
-static int run( const std::string& params );
 
-
-TEST( cachetest, all )
-{
-std::vector< std::string > param =
-{
-{ "cachetest order -etc -bnum 5000 10000" },
-{ "cachetest order -th 4 -bnum 5000 10000" }, 
-{ "cachetest order -th 4 -rnd -etc -bnum 5000 -capcnt 10000 10000" },
-{ "cachetest order -th 4 -rnd -etc -bnum 5000 -capsiz 10000 10000" },
-{ "cachetest order -th 4 -rnd -etc -tran -tc -bnum 5000 -capcnt 10000 10000" },
-{ "cachetest wicked -bnum 5000 10000" },
-{ "cachetest wicked -th 4 -it 4 -tc -bnum 5000 -capcnt 10000 10000" },
-{ "cachetest tran -bnum 5000 10000" },
-{ "cachetest tran -th 2 -it 4 -tc -bnum 5000 10000" }
-};
-
-    for( auto v : param )
-    {
-        std::cout << "**************" << v << "\n" << std::flush;
-        ASSERT_TRUE( run( v ) == 0 );
-    }
-}
-
-int run( const std::string& params )
-{
-
-    char *command_line = new char[params.size() + 1];
-    strcpy( command_line, params.c_str() );
-    SPLI_ARGS;
-    const int ret = cachetest( argc, argv );
-    delete [] command_line;
-    return ret;
-}
-                                         
 
 // main routine
-static int cachetest(int argc, char** argv) 
-{
+int main(int argc, char** argv) {
   g_progname = argv[0];
   const char* ebuf = kc::getenv("KCRNDSEED");
   g_randseed = ebuf ? (uint32_t)kc::atoi(ebuf) : (uint32_t)(kc::time() * 1000);
@@ -108,6 +69,7 @@ static int cachetest(int argc, char** argv)
     }
     oprintf("\n\n");
   }
+  assert( rv ==  0 );
   return rv;
 }
 
