@@ -22,7 +22,7 @@ make -j5 || exit 1
 #
 # Run test
 #
-#ctest --verbose
-ctest
+ctest --verbose
+#ctest
 
 
