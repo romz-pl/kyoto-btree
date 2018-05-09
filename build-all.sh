@@ -38,53 +38,89 @@ ${tt} tran -bnum 5000 10000                                          >> ${log} |
 ${tt} tran -th 2 -it 4 -tc -bnum 5000 10000                          >> ${log} || exit 1
 
 
-tt=./tests/dirmgr/dirmgr
+dirmgr=./tests/dirmgr/dirmgr
 log=dirmgr.log
-${tt} create -otr casket                    >> ${log} || exit 1
-${tt} inform -st casket                     >> ${log} || exit 1
-${tt} set -add casket duffy 1231            >> ${log} || exit 1
-${tt} set -add casket micky 0101            >> ${log} || exit 1
-${tt} set casket fal 1007                   >> ${log} || exit 1
-${tt} set casket mikio 0211                 >> ${log} || exit 1
-${tt} set casket natsuki 0810               >> ${log} || exit 1
-${tt} set casket micky ""                   >> ${log} || exit 1
-${tt} set -app casket duffy kukuku          >> ${log} || exit 1
-${tt} remove casket micky                   >> ${log} || exit 1
-${tt} list -pv casket > check.out           >> ${log} || exit 1
-${tt} set casket ryu 1                      >> ${log} || exit 1
-${tt} set casket ken 2                      >> ${log} || exit 1
-${tt} remove casket duffy                   >> ${log} || exit 1
-${tt} set casket ryu syo-ryu-ken            >> ${log} || exit 1
-${tt} set casket ken tatsumaki-senpu-kyaku  >> ${log} || exit 1
-${tt} set -inci casket int 1234             >> ${log} || exit 1
-${tt} set -inci casket int 5678             >> ${log} || exit 1
-${tt} set -incd casket double 1234.5678     >> ${log} || exit 1
-${tt} set -incd casket double 8765.4321     >> ${log} || exit 1
-${tt} get casket mikio                      >> ${log} || exit 1
-${tt} get casket ryu                        >> ${log} || exit 1
-#${tt} import casket lab/numbers.tsv         >> ${log} || exit 1
-${tt} list -pv -px casket > check.out       >> ${log} || exit 1
-${tt} copy casket casket-para               >> ${log} || exit 1
-${tt} dump casket check.out                 >> ${log} || exit 1
-${tt} load -otr casket check.out            >> ${log} || exit 1
-${tt} setbulk casket aa aaa bb bbb cc ccc dd ddd >> ${log} || exit 1
-${tt} removebulk casket aa bb zz            >> ${log} || exit 1
-${tt} getbulk casket aa bb cc dd            >> ${log} || exit 1
-${tt} check -onr casket                     >> ${log} || exit 1
-${tt} inform -st casket                     >> ${log} || exit 1
-${tt} create -otr -otl -onr -tc casket      >> ${log} || exit 1
-#${tt} import casket < lab/numbers.tsv       >> ${log} || exit 1
-${tt} set casket mikio kyotocabinet         >> ${log} || exit 1
-${tt} set -app casket tako ikaunini         >> ${log} || exit 1
-${tt} set -app casket mikio kyototyrant     >> ${log} || exit 1
-${tt} set -app casket mikio kyotodystopia   >> ${log} || exit 1
-${tt} get -px casket mikio > check.out      >> ${log} || exit 1
-${tt} list casket > check.out               >> ${log} || exit 1
-${tt} check -onr casket                     >> ${log} || exit 1
-${tt} clear casket                          >> ${log} || exit 1
+${dirmgr} create -otr casket                    >> ${log} || exit 1
+${dirmgr} inform -st casket                     >> ${log} || exit 1
+${dirmgr} set -add casket duffy 1231            >> ${log} || exit 1
+${dirmgr} set -add casket micky 0101            >> ${log} || exit 1
+${dirmgr} set casket fal 1007                   >> ${log} || exit 1
+${dirmgr} set casket mikio 0211                 >> ${log} || exit 1
+${dirmgr} set casket natsuki 0810               >> ${log} || exit 1
+${dirmgr} set casket micky ""                   >> ${log} || exit 1
+${dirmgr} set -app casket duffy kukuku          >> ${log} || exit 1
+${dirmgr} remove casket micky                   >> ${log} || exit 1
+${dirmgr} list -pv casket > check.out           >> ${log} || exit 1
+${dirmgr} set casket ryu 1                      >> ${log} || exit 1
+${dirmgr} set casket ken 2                      >> ${log} || exit 1
+${dirmgr} remove casket duffy                   >> ${log} || exit 1
+${dirmgr} set casket ryu syo-ryu-ken            >> ${log} || exit 1
+${dirmgr} set casket ken tatsumaki-senpu-kyaku  >> ${log} || exit 1
+${dirmgr} set -inci casket int 1234             >> ${log} || exit 1
+${dirmgr} set -inci casket int 5678             >> ${log} || exit 1
+${dirmgr} set -incd casket double 1234.5678     >> ${log} || exit 1
+${dirmgr} set -incd casket double 8765.4321     >> ${log} || exit 1
+${dirmgr} get casket mikio                      >> ${log} || exit 1
+${dirmgr} get casket ryu                        >> ${log} || exit 1
+#${dirmgr} import casket lab/numbers.tsv         >> ${log} || exit 1
+${dirmgr} list -pv -px casket > check.out       >> ${log} || exit 1
+${dirmgr} copy casket casket-para               >> ${log} || exit 1
+${dirmgr} dump casket check.out                 >> ${log} || exit 1
+${dirmgr} load -otr casket check.out            >> ${log} || exit 1
+${dirmgr} setbulk casket aa aaa bb bbb cc ccc dd ddd >> ${log} || exit 1
+${dirmgr} removebulk casket aa bb zz            >> ${log} || exit 1
+${dirmgr} getbulk casket aa bb cc dd            >> ${log} || exit 1
+${dirmgr} check -onr casket                     >> ${log} || exit 1
+${dirmgr} inform -st casket                     >> ${log} || exit 1
+${dirmgr} create -otr -otl -onr -tc casket      >> ${log} || exit 1
+#${dirmgr} import casket < lab/numbers.tsv       >> ${log} || exit 1
+${dirmgr} set casket mikio kyotocabinet         >> ${log} || exit 1
+${dirmgr} set -app casket tako ikaunini         >> ${log} || exit 1
+${dirmgr} set -app casket mikio kyototyrant     >> ${log} || exit 1
+${dirmgr} set -app casket mikio kyotodystopia   >> ${log} || exit 1
+${dirmgr} get -px casket mikio > check.out      >> ${log} || exit 1
+${dirmgr} list casket > check.out               >> ${log} || exit 1
+${dirmgr} check -onr casket                     >> ${log} || exit 1
+${dirmgr} clear casket                          >> ${log} || exit 1
 
 
-
+rm -rf casket* 
+dirtest=./tests/dirtest/dirtest
+log=dirtest.log                        
+${dirtest} order -set casket 500                  >> ${log} || exit 1
+${dirtest} order -get casket 500                  >> ${log} || exit 1
+${dirtest} order -getw casket 500                 >> ${log} || exit 1
+${dirtest} order -rem casket 500                  >> ${log} || exit 1
+${dirtest} order casket 500                       >> ${log} || exit 1
+${dirtest} order -etc casket 500                  >> ${log} || exit 1
+${dirtest} order -th 4 casket 500                 >> ${log} || exit 1
+${dirtest} order -th 4 -rnd -etc casket 500       >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} order -th 4 -rnd -etc -tran casket 500 >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} order -th 4 -rnd -etc -oat casket 500  >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} order -th 4 -rnd -etc -tc casket 500   >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} queue casket 500                       >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} queue -rnd casket 500                  >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} queue -th 4 -it 4 casket 500           >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} queue -th 4 -it 4 -rnd casket 500      >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} wicked casket 500                      >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} wicked -th 4 -it 4 casket 500          >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} wicked -th 4 -it 4 -oat casket 500     >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} wicked -th 4 -it 4 -tc casket 500      >> ${log} || exit 1
+${dirmgr}  check -onr casket                      >> ${log} || exit 1
+${dirtest} tran casket 500                        >> ${log} || exit 1
+${dirtest} tran -th 2 -it 4 casket 500            >> ${log} || exit 1
+${dirtest} tran -th 2 -it 4 -tc casket 500        >> ${log} || exit 1
 
 
 
