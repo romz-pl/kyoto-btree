@@ -1,7 +1,9 @@
-set( TEST_NAME cachetest )
+set( TEST_NAME kyoto-test )
 
 add_executable( ${TEST_NAME}
+    cmdcommon.cpp
     kccachetest.cc
+    kcdirmgr.cc
     main.cpp
 )
 

@@ -15,12 +15,13 @@
 #include "gtest/gtest.h"
 #include <kccachedb.h>
 #include "cmdcommon.h"
+#include "split_args.h"
 
 
 // global variables
-const char* g_progname;                  // program name
-uint32_t g_randseed;                     // random seed
-int64_t g_memusage;                      // memory usage
+static const char* g_progname;                  // program name
+static uint32_t g_randseed;                     // random seed
+static int64_t g_memusage;                      // memory usage
 
 
 // function prototypes
@@ -41,17 +42,7 @@ static int32_t procwicked(int64_t rnum, int32_t thnum, int32_t itnum,
                           int32_t opts, int64_t bnum, int64_t capcnt, int64_t capsiz, bool lv);
 static int32_t proctran(int64_t rnum, int32_t thnum, int32_t itnum,
                         int32_t opts, int64_t bnum, int64_t capcnt, int64_t capsiz, bool lv);
-                        
-#define SPLI_ARGS enum { kMaxArgs = 64 }; \
-int argc = 0;                             \
-char *argv[kMaxArgs];                     \
-char *p2 = strtok(command_line, " ");     \
-while (p2 && argc < kMaxArgs-1)           \
-  {                                       \
-    argv[argc++] = p2;                    \
-    p2 = strtok(0, " ");                  \
-  }                                       \
-argv[argc] = 0;                           
+                                         
 
 
 TEST( cachetest, A )
