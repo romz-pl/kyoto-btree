@@ -221,5 +221,108 @@ ${foresttest} tran -th 2 -it 4 -pccap 100k casket 5000                      >> $
 ${foresttest} tran -th 2 -it 4 -tc -bnum 5000 -rcd casket 5000              >> ${log} || exit 1
 echo "OK"
 
+echo -n "grasstest... "
+grasstest=./tests/grasstest/grasstest
+log=grasstest.log 
+rm -rf casket*
+${grasstest} order -etc -bnum 5000 10000                                    >> ${log} || exit 1
+${grasstest} order -th 4 -bnum 5000 10000                                   >> ${log} || exit 1
+${grasstest} order -th 4 -rnd -etc -bnum 5000 10000                         >> ${log} || exit 1
+${grasstest} order -th 4 -rnd -etc -bnum 5000 10000                         >> ${log} || exit 1
+${grasstest} order -th 4 -rnd -etc -tran -tc -bnum 5000 -pccap 10k -rcd 500 >> ${log} || exit 1
+${grasstest} wicked -bnum 5000 10000                                        >> ${log} || exit 1
+${grasstest} wicked -th 4 -it 4 -tc -bnum 5000 -pccap 10k -rcd 1000         >> ${log} || exit 1
+${grasstest} tran -bnum 500 10000                                           >> ${log} || exit 1
+${grasstest} tran -th 2 -it 4 -tc -bnum 5000 -pccap 10k -rcd 5000           >> ${log} || exit 1
+echo "OK"
+
+
+echo -n "hashmgr... "
+hashmgr=./tests/hashmgr/hashmgr
+log=hashmgr.log 
+rm -rf casket*
+${hashmgr} create -otr -apow 1 -fpow 2 -bnum 3 casket   >> ${log} || exit 1
+${hashmgr} inform -st casket                            >> ${log} || exit 1
+${hashmgr} set -add casket duffy 1231                   >> ${log} || exit 1
+${hashmgr} set -add casket micky 0101                   >> ${log} || exit 1
+${hashmgr} set casket fal 1007                          >> ${log} || exit 1
+${hashmgr} set casket mikio 0211                        >> ${log} || exit 1
+${hashmgr} set casket natsuki 0810                      >> ${log} || exit 1
+${hashmgr} set casket micky ""                          >> ${log} || exit 1
+${hashmgr} set -app casket duffy kukuku                 >> ${log} || exit 1
+${hashmgr} remove casket micky                          >> ${log} || exit 1
+${hashmgr} list -pv casket > check.out                  >> ${log} || exit 1
+${hashmgr} set casket ryu 1                             >> ${log} || exit 1
+${hashmgr} set casket ken 2                             >> ${log} || exit 1
+${hashmgr} remove casket duffy                          >> ${log} || exit 1
+${hashmgr} set casket ryu syo-ryu-ken                   >> ${log} || exit 1
+${hashmgr} set casket ken tatsumaki-senpu-kyaku         >> ${log} || exit 1
+${hashmgr} set -inci casket int 1234                    >> ${log} || exit 1
+${hashmgr} set -inci casket int 5678                    >> ${log} || exit 1
+${hashmgr} set -incd casket double 1234.5678            >> ${log} || exit 1
+${hashmgr} set -incd casket double 8765.4321            >> ${log} || exit 1
+${hashmgr} get casket mikio                             >> ${log} || exit 1
+${hashmgr} get casket ryu                               >> ${log} || exit 1
+#${hashmgr} import casket lab/numbers.tsv                >> ${log} || exit 1
+${hashmgr} list -pv -px casket > check.out              >> ${log} || exit 1
+${hashmgr} copy casket casket-para                      >> ${log} || exit 1
+${hashmgr} dump casket check.out                        >> ${log} || exit 1
+${hashmgr} load -otr casket check.out                   >> ${log} || exit 1
+${hashmgr} defrag -onl casket                           >> ${log} || exit 1
+${hashmgr} setbulk casket aa aaa bb bbb cc ccc dd ddd   >> ${log} || exit 1
+${hashmgr} removebulk casket aa bb zz                   >> ${log} || exit 1
+${hashmgr} getbulk casket aa bb cc dd                   >> ${log} || exit 1
+${hashmgr} check -onr casket                            >> ${log} || exit 1
+${hashmgr} inform -st casket                            >> ${log} || exit 1
+${hashmgr} create -otr -otl -onr -apow 1 -fpow 3 -ts -tl -tc -bnum 1 casket >> ${log} || exit 1
+#${hashmgr} import casket < lab/numbers.tsv              >> ${log} || exit 1
+${hashmgr} set casket mikio kyotocabinet                >> ${log} || exit 1
+${hashmgr} set -app casket tako ikaunini                >> ${log} || exit 1
+${hashmgr} set -app casket mikio kyototyrant            >> ${log} || exit 1
+${hashmgr} set -app casket mikio kyotodystopia          >> ${log} || exit 1
+${hashmgr} get -px casket mikio > check.out             >> ${log} || exit 1
+${hashmgr} list casket > check.out                      >> ${log} || exit 1
+${hashmgr} check -onr casket                            >> ${log} || exit 1
+${hashmgr} clear casket                                 >> ${log} || exit 1
+echo "OK"
+
+echo -n "hashtest... "
+hashtest=./tests/hashtest/hashtest
+log=hashtest.log 
+${hashtest} order -set -bnum 5000 -msiz 50000 casket 10000                  >> ${log} || exit 1
+${hashtest} order -get -msiz 50000 casket 10000                             >> ${log} || exit 1
+${hashtest} order -getw -msiz 5000 casket 10000                             >> ${log} || exit 1
+${hashtest} order -rem -msiz 50000 casket 10000                             >> ${log} || exit 1
+${hashtest} order -bnum 5000 -msiz 50000 casket 10000                       >> ${log} || exit 1
+${hashtest} order -etc -bnum 5000 -msiz 50000 -dfunit 4 casket 10000        >> ${log} || exit 1
+${hashtest} order -th 4 -bnum 5000 -msiz 50000 -dfunit 4 casket 10000       >> ${log} || exit 1
+${hashtest} order -th 4 -rnd -etc -bnum 5000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} order -th 4 -rnd -etc -tran -bnum 5000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} order -th 4 -rnd -etc -oat -bnum 5000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} order -th 4 -rnd -etc -apow 2 -fpow 3 -ts -tl -tc -bnum 5000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} queue -bnum 5000 -msiz 50000 casket 10000                       >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} queue -rnd -bnum 5000 -msiz 50000 casket 10000                  >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} queue -th 4 -it 4 -bnum 5000 -msiz 50000 casket 10000           >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} queue -th 4 -it 4 -rnd -bnum 5000 -msiz 50000 casket 10000      >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} wicked -bnum 5000 -msiz 50000 casket 10000                      >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} wicked -th 4 -it 4 -bnum 5000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} wicked -th 4 -it 4 -oat -bnum 5000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} wicked -th 4 -it 4 -apow 2 -fpow 3 -ts -tl -tc -bnum 10000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+${hashmgr} check -onr casket                                                >> ${log} || exit 1
+${hashtest} tran casket 10000                                               >> ${log} || exit 1
+${hashtest} tran -th 2 -it 4 casket 10000                                   >> ${log} || exit 1
+${hashtest} tran -th 2 -it 4 -apow 2 -fpow 3 -ts -tl -tc -bnum 10000 -msiz 50000 -dfunit 4 casket 10000 >> ${log} || exit 1
+echo "OK"
 
 
