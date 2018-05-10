@@ -27,4 +27,6 @@ add_subdirectory(tests/grasstest)
 add_subdirectory(tests/hashmgr)
 add_subdirectory(tests/hashtest)
 add_subdirectory(tests/langctest)
+add_subdirectory(tests/polymgr)
+add_subdirectory(tests/polytest)
 
