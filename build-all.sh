@@ -25,23 +25,23 @@ make -j5 || exit 1
 # ctest --verbose
 #ctest
 
-echo -n "cachetest..."
-tt=./tests/cachetest/cachetest
+echo -n "cachetest... "
+cachetest=./tests/cachetest/cachetest
 log=cachetest.log
 rm -rf ${log}
-${tt} order -etc -bnum 5000 10000                                     > ${log} || exit 1
-${tt} order -th 4 -bnum 5000 10000                                   >> ${log} || exit 1
-${tt} order -th 4 -rnd -etc -bnum 5000 -capcnt 10000 10000           >> ${log} || exit 1
-${tt} order -th 4 -rnd -etc -bnum 5000 -capsiz 10000 10000           >> ${log} || exit 1
-${tt} order -th 4 -rnd -etc -tran -tc -bnum 5000 -capcnt 10000 10000 >> ${log} || exit 1
-${tt} wicked -bnum 5000 10000                                        >> ${log} || exit 1
-${tt} wicked -th 4 -it 4 -tc -bnum 5000 -capcnt 10000 10000          >> ${log} || exit 1
-${tt} tran -bnum 5000 10000                                          >> ${log} || exit 1
-${tt} tran -th 2 -it 4 -tc -bnum 5000 10000                          >> ${log} || exit 1
+${cachetest} order -etc -bnum 5000 10000                                     > ${log} || exit 1
+${cachetest} order -th 4 -bnum 5000 10000                                   >> ${log} || exit 1
+${cachetest} order -th 4 -rnd -etc -bnum 5000 -capcnt 10000 10000           >> ${log} || exit 1
+${cachetest} order -th 4 -rnd -etc -bnum 5000 -capsiz 10000 10000           >> ${log} || exit 1
+${cachetest} order -th 4 -rnd -etc -tran -tc -bnum 5000 -capcnt 10000 10000 >> ${log} || exit 1
+${cachetest} wicked -bnum 5000 10000                                        >> ${log} || exit 1
+${cachetest} wicked -th 4 -it 4 -tc -bnum 5000 -capcnt 10000 10000          >> ${log} || exit 1
+${cachetest} tran -bnum 5000 10000                                          >> ${log} || exit 1
+${cachetest} tran -th 2 -it 4 -tc -bnum 5000 10000                          >> ${log} || exit 1
 echo "OK"
 
 
-echo -n "dirmgr..."
+echo -n "dirmgr... "
 dirmgr=./tests/dirmgr/dirmgr
 log=dirmgr.log
 rm -rf ${log}
@@ -90,7 +90,7 @@ ${dirmgr} clear casket                          >> ${log} || exit 1
 echo "OK"
 
 
-echo -n "dirtest..."
+echo -n "dirtest... "
 rm -rf casket* 
 dirtest=./tests/dirtest/dirtest
 log=dirtest.log
@@ -132,10 +132,10 @@ ${dirtest} tran -th 2 -it 4 -tc casket 500        >> ${log} || exit 1
 echo "OK"
 
 
-echo -n "forestmgr..."
+echo -n "forestmgr... "
 rm -rf casket* 
 forestmgr=./tests/forestmgr/forestmgr
-log=dirtest.log 
+log=forestmgr.log 
 rm -rf ${log}
 ${forestmgr} create -otr -bnum 3 casket             >> ${log} || exit 1
 ${forestmgr} inform -st casket                      >> ${log} || exit 1
@@ -181,6 +181,45 @@ ${forestmgr} check -onr casket                      >> ${log} || exit 1
 ${forestmgr} clear casket                           >> ${log} || exit 1
 echo "OK"
 
+echo -n "foresttest... "
+rm -rf casket* 
+foresttest=./tests/foresttest/foresttest
+log=foresttest.log 
+${foresttest} order -set -psiz 100 -bnum 5000 -pccap 100k casket 5000       >> ${log} || exit 1
+${foresttest} order -get -pccap 100k casket 5000                            >> ${log} || exit 1
+${foresttest} order -getw -pccap 100k casket 5000                           >> ${log} || exit 1
+${foresttest} order -rem -pccap 100k casket 5000                            >> ${log} || exit 1
+${foresttest} order -bnum 5000 -psiz 100 -pccap 100k casket 5000            >> ${log} || exit 1
+${foresttest} order -etc -bnum 5000 -psiz 1000 -pccap 100k casket 5000      >> ${log} || exit 1
+${foresttest} order -th 4 -bnum 5000 -psiz 1000 -pccap 100k casket 5000     >> ${log} || exit 1
+${foresttest} order -th 4 -pccap 100k -rnd -etc -bnum 5000 -psiz 1000 -pccap 100k -rcd casket 5000 >> ${log} || exit 1
+${forestmgr} check -onr casket                         		                >> ${log} || exit 1
+${foresttest} order -th 4 -rnd -etc -tran -bnum 500 -psiz 1000 -pccap 100k casket 500 >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} order -th 4 -rnd -etc -oat -bnum 500 -psiz 1000 -pccap 100k casket 500 >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} order -th 4 -rnd -etc -tc -bnum 5000 -psiz 1000 casket 5000   >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} queue -bnum 5000 -psiz 500 casket 5000                        >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} queue -rnd -bnum 5000 -psiz 500 casket 5000                   >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} queue -th 4 -it 4 -bnum 5000 -psiz 500 casket 5000            >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} queue -th 4 -it 4 -rnd -bnum 5000 -psiz 500 casket 5000       >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} wicked -bnum 5000 -psiz 1000 -pccap 100k casket 5000          >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} wicked -th 4 -it 4 -bnum 5000 -pccap 100k -rcd casket 5000    >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} wicked -th 4 -it 4 -oat -bnum 500 -pccap 100k casket 500      >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} wicked -th 4 -it 4 -tc -bnum 500 casket 500                   >> ${log} || exit 1
+${forestmgr} check -onr casket                                              >> ${log} || exit 1
+${foresttest} tran casket 5000                                              >> ${log} || exit 1
+${foresttest} tran -th 2 -it 4 -pccap 100k casket 5000                      >> ${log} || exit 1
+${foresttest} tran -th 2 -it 4 -tc -bnum 5000 -rcd casket 5000              >> ${log} || exit 1
+echo "OK"
 
 
 
