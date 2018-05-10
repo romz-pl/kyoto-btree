@@ -23,4 +23,5 @@ add_subdirectory(tests/dirtest)
 add_subdirectory(tests/forestmgr)
 add_subdirectory(tests/foresttest)
 add_subdirectory(tests/grasstest)
+add_subdirectory(tests/hashmgr)
 
