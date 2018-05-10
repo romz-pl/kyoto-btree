@@ -20,5 +20,6 @@ add_subdirectory(src)
 add_subdirectory(tests/cachetest)
 add_subdirectory(tests/dirmgr)
 add_subdirectory(tests/dirtest)
+add_subdirectory(tests/forestmgr)
 
 
