@@ -9,6 +9,7 @@ SET( ROMZ_CXX_FLAGS -pthread -g -O0 -fprofile-arcs -ftest-coverage -std=c++11 )
 
 #SET( ROMZ_C_FLAGS -Wall -Wpedantic -Wextra -pthread -g -O0 -fprofile-arcs -ftest-coverage )
 
+SET( ROMZ_C_FLAGS -pthread -g -O0 -fprofile-arcs -ftest-coverage )
 
 #include(CTest)
 #enable_testing(true)
@@ -25,4 +26,5 @@ add_subdirectory(tests/foresttest)
 add_subdirectory(tests/grasstest)
 add_subdirectory(tests/hashmgr)
 add_subdirectory(tests/hashtest)
+add_subdirectory(tests/langctest)
 
