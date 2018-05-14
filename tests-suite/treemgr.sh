@@ -3,20 +3,20 @@
 echo -n "treemgr... "
 treemgr=./tests/treemgr/treemgr
 log=treemgr.log
-rm -rf casket*  >> ${log} || exit 1
-${treemgr} create -otr -apow 1 -fpow 2 -bnum 3 casket  >> ${log} || exit 1
-${treemgr} inform -st casket  >> ${log} || exit 1
-${treemgr} set -add casket duffy 1231  >> ${log} || exit 1
-${treemgr} set -add casket micky 0101  >> ${log} || exit 1
-${treemgr} set casket fal 1007  >> ${log} || exit 1
-${treemgr} set casket mikio 0211  >> ${log} || exit 1
-${treemgr} set casket natsuki 0810  >> ${log} || exit 1
-${treemgr} set casket micky ""  >> ${log} || exit 1
-${treemgr} set -app casket duffy kukuku  >> ${log} || exit 1
-${treemgr} remove casket micky  >> ${log} || exit 1
-${treemgr} list -pv casket > check.out  >> ${log} || exit 1
-${treemgr} set casket ryu 1  >> ${log} || exit 1
-${treemgr} set casket ken 2  >> ${log} || exit 1
+rm -rf casket*                                              >> ${log} || exit 1
+${treemgr} create -otr -apow 1 -fpow 2 -bnum 3 casket       >> ${log} || exit 1
+${treemgr} inform -st casket                                >> ${log} || exit 1
+${treemgr} set -add casket duffy 1231                       >> ${log} || exit 1
+${treemgr} set -add casket micky 0101                       >> ${log} || exit 1
+${treemgr} set casket fal 1007                              >> ${log} || exit 1
+${treemgr} set casket mikio 0211                            >> ${log} || exit 1
+${treemgr} set casket natsuki 0810                          >> ${log} || exit 1
+${treemgr} set casket micky ""                              >> ${log} || exit 1
+${treemgr} set -app casket duffy kukuku                     >> ${log} || exit 1
+${treemgr} remove casket micky                              >> ${log} || exit 1
+${treemgr} list -pv casket > check.out                      >> ${log} || exit 1
+${treemgr} set casket ryu 1                                 >> ${log} || exit 1
+${treemgr} set casket ken 2                                 >> ${log} || exit 1
 ${treemgr} remove casket duffy  >> ${log} || exit 1
 ${treemgr} set casket ryu syo-ryu-ken  >> ${log} || exit 1
 ${treemgr} set casket ken tatsumaki-senpu-kyaku  >> ${log} || exit 1
