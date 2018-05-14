@@ -31,14 +31,14 @@ ${treemgr} check -onr casket                                                    
 ${treetest} wicked -bnum 5000 -psiz 1000 -msiz 50000 -pccap 100k casket 10000                                           >> ${log} || exit 1
 ${treemgr} check -onr casket                                                                                            >> ${log} || exit 1
 ${treetest} wicked -th 4 -it 4 -bnum 5000 -msiz 50000 -dfunit 4 -pccap 100k -rcd casket 10000                           >> ${log} || exit 1
-${treemgr} check -onr casket                                                                    >> ${log} || exit 1
-${treetest} wicked -th 4 -it 4 -oat -bnum 5000 -msiz 50000 -dfunit 4 -pccap 100k casket 1000    >> ${log} || exit 1
-${treemgr} check -onr casket                                                                    >> ${log} || exit 1
-${treetest} wicked -th 4 -it 4 -apow 2 -fpow 3 -ts -tl -tc -bnum 10000 -msiz 50000 -dfunit 4 casket 1000  >> ${log} || exit 1
-${treemgr} check -onr casket                                                                    >> ${log} || exit 1
-${treetest} tran casket 10000                                                                   >> ${log} || exit 1
-${treetest} tran -th 2 -it 4 -pccap 100k casket 10000                                                           >> ${log} || exit 1
-${treetest} tran -th 2 -it 4 -apow 2 -fpow 3 -ts -tl -tc -bnum 10000 -msiz 50000 -dfunit 4 -rcd casket 10000  >> ${log} || exit 1
+${treemgr} check -onr casket                                                                                            >> ${log} || exit 1
+${treetest} wicked -th 4 -it 4 -oat -bnum 5000 -msiz 50000 -dfunit 4 -pccap 100k casket 1000                            >> ${log} || exit 1
+${treemgr} check -onr casket                                                                                            >> ${log} || exit 1
+${treetest} wicked -th 4 -it 4 -apow 2 -fpow 3 -ts -tl -tc -bnum 10000 -msiz 50000 -dfunit 4 casket 1000                >> ${log} || exit 1
+${treemgr} check -onr casket                                                                                            >> ${log} || exit 1
+${treetest} tran casket 10000                                                                                           >> ${log} || exit 1
+${treetest} tran -th 2 -it 4 -pccap 100k casket 10000                                                                   >> ${log} || exit 1
+${treetest} tran -th 2 -it 4 -apow 2 -fpow 3 -ts -tl -tc -bnum 10000 -msiz 50000 -dfunit 4 -rcd casket 10000            >> ${log} || exit 1
 echo "OK"
 
 
