@@ -33,4 +33,6 @@ add_subdirectory(tests/prototest)
 add_subdirectory(tests/stashtest)
 add_subdirectory(tests/treemgr)
 add_subdirectory(tests/treetest)
+add_subdirectory(tests/utilmgr)
+add_subdirectory(tests/utiltest)
 
