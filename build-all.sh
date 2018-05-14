@@ -36,12 +36,12 @@ make -j5 || exit 1
 #../tests-suite/langctest.sh  || exit 1
 #../tests-suite/polymgr.sh    || exit 1
 ../tests-suite/polytest.sh   || exit 1
-#../tests-suite/prototest.sh  || exit 1
-#../tests-suite/stashtest.sh  || exit 1
-#../tests-suite/treemgr.sh    || exit 1
-#../tests-suite/treetest.sh   || exit 1
-#../tests-suite/utilmgr.sh    || exit 1
-#../tests-suite/utiltest.sh   || exit 1
+../tests-suite/prototest.sh  || exit 1
+../tests-suite/stashtest.sh  || exit 1
+../tests-suite/treemgr.sh    || exit 1
+../tests-suite/treetest.sh   || exit 1
+../tests-suite/utilmgr.sh    || exit 1
+../tests-suite/utiltest.sh   || exit 1
 
 
 
