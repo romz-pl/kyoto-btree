@@ -10,26 +10,26 @@ ${polytest} order -get "casket.kct#msiz=50000" 10000                            
 ${polytest} order -getw "casket.kct#msiz=5000" 10000                                                    >> ${log} || exit 1
 ${polytest} order -rem "casket.kct#msiz=50000" 10000                                                    >> ${log} || exit 1
 ${polytest} order "casket.kct#bnum=5000#msiz=50000" 10000                                               >> ${log} || exit 1
-#${polytest} order -etc "casket.kct#bnum=5000#msiz=50000#dfunit=4" 10000                                 >> ${log} || exit 1
-#${polytest} order -th 4 "casket.kct#bnum=5000#msiz=50000#dfunit=4" 10000                                >> ${log} || exit 1
-#${polytest} order -th 4 -rnd -etc "casket.kct#bnum=5000#msiz=0#dfunit=1" 1000                           >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} order -th 4 -rnd -etc -tran "casket.kct#bnum=5000#msiz=0#dfunit=2" 1000                     >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} order -th 4 -rnd -etc -oat "casket.kct#bnum=5000#msiz=0#dfunit=3" 1000                      >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} order -th 4 -rnd -etc "casket.kct#apow=2#fpow=3#opts=slc#bnum=5000#msiz=0#dfunit=4" 1000    >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} queue "casket.kct#bnum=5000#msiz=0" 10000                                                   >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} queue -rnd "casket.kct#bnum=5000#msiz=0" 10000                                              >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} queue -th 4 -it 4 "casket.kct#bnum=5000#msiz=0" 10000                                       >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} queue -th 4 -it 4 -rnd "casket.kct#bnum=5000#msiz=0" 10000                                  >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
-#${polytest} wicked "casket.kct#bnum=5000#msiz=0" 1000                                                   >> ${log} || exit 1
-#${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} order -etc "casket.kct#bnum=5000#msiz=50000#dfunit=4" 10000                                 >> ${log} || exit 1
+${polytest} order -th 4 "casket.kct#bnum=5000#msiz=50000#dfunit=4" 10000                                >> ${log} || exit 1
+${polytest} order -th 4 -rnd -etc "casket.kct#bnum=5000#msiz=0#dfunit=1" 1000                           >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} order -th 4 -rnd -etc -tran "casket.kct#bnum=5000#msiz=0#dfunit=2" 1000                     >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} order -th 4 -rnd -etc -oat "casket.kct#bnum=5000#msiz=0#dfunit=3" 1000                      >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} order -th 4 -rnd -etc "casket.kct#apow=2#fpow=3#opts=slc#bnum=5000#msiz=0#dfunit=4" 1000    >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} queue "casket.kct#bnum=5000#msiz=0" 10000                                                   >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} queue -rnd "casket.kct#bnum=5000#msiz=0" 10000                                              >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} queue -th 4 -it 4 "casket.kct#bnum=5000#msiz=0" 10000                                       >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} queue -th 4 -it 4 -rnd "casket.kct#bnum=5000#msiz=0" 10000                                  >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
+${polytest} wicked "casket.kct#bnum=5000#msiz=0" 1000                                                   >> ${log} || exit 1
+${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
 #${polytest} wicked -th 4 -it 4 "casket.kct#bnum=5000#msiz=0#dfunit=1" 1000                              >> ${log} || exit 1
 #${polymgr} check -onr casket.kct                                                                        >> ${log} || exit 1
 #${polytest} wicked -th 4 -it 4 -oat "casket.kct#bnum=5000#msiz=0#dfunit=1" 1000                         >> ${log} || exit 1
