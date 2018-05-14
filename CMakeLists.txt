@@ -29,4 +29,4 @@ add_subdirectory(tests/hashtest)
 add_subdirectory(tests/langctest)
 add_subdirectory(tests/polymgr)
 add_subdirectory(tests/polytest)
-
+add_subdirectory(tests/prototest)
