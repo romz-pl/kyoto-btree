@@ -31,4 +31,6 @@ add_subdirectory(tests/polymgr)
 add_subdirectory(tests/polytest)
 add_subdirectory(tests/prototest)
 add_subdirectory(tests/stashtest)
+add_subdirectory(tests/treemgr)
+add_subdirectory(tests/treetest)
 
