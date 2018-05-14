@@ -51,22 +51,22 @@ ${polytest} index -th 4 -rnd -set "casket.kct#idxclim=32k#idxdbnum=4" 10000     
 ${polytest} index -th 4 -rnd -get "casket.kct" 10000                                                    >> ${log} || exit 1
 ${polytest} index -th 4 -rnd -rem "casket.kct" 10000                                                    >> ${log} || exit 1
 ${polytest} index -th 4 -rnd -etc "casket.kct#idxclim=32k#idxdbnum=4" 10000                             >> ${log} || exit 1
-#rm -rf casket*                                                                                          >> ${log} || exit 1
-#${polytest} order -rnd "casket.kcx" 10000                                                               >> ${log} || exit 1
-#${polytest} order -th 4 -rnd "casket.kcx" 10000                                                         >> ${log} || exit 1
-#${polytest} wicked "casket.kcx" 10000                                                                   >> ${log} || exit 1
-#${polytest} wicked -th 4 "casket.kcx" 10000                                                             >> ${log} || exit 1
-#${polymgr} list -pv "casket.kcx" > check.out                                                            >> ${log} || exit 1
-#${polymgr} list -max 1000 -pv "casket.kcx" > check.out                                                  >> ${log} || exit 1
-#${polytest} mapred "casket.kcx" 10000                                                                   >> ${log} || exit 1
-#${polytest} mapred -xpm -xpr -xpf "casket.kcx" 10000                                                    >> ${log} || exit 1
-#rm -rf casket*                                                                                          >> ${log} || exit 1
-#${polytest} order -rnd "casket.kch#opts=s#bnum=256" 1000                                                >> ${log} || exit 1
-#${polytest} order -rnd "casket.kct#opts=l#psiz=256" 1000                                                >> ${log} || exit 1
-#${polytest} order -rnd "casket.kcd#opts=c#bnum=256" 500                                                 >> ${log} || exit 1
-#${polytest} order -rnd "casket.kcf#opts=c#psiz=256" 500                                                 >> ${log} || exit 1
-#${polytest} order -rnd "casket.kcx" 500                                                                 >> ${log} || exit 1
-#${polymgr} merge -add "casket#type=kct" casket.kch casket.kct casket.kcd casket.kcf casket.kcx          >> ${log} || exit 1
+rm -rf casket*                                                                                          >> ${log} || exit 1
+${polytest} order -rnd "casket.kcx" 10000                                                               >> ${log} || exit 1
+${polytest} order -th 4 -rnd "casket.kcx" 10000                                                         >> ${log} || exit 1
+${polytest} wicked "casket.kcx" 10000                                                                   >> ${log} || exit 1
+${polytest} wicked -th 4 "casket.kcx" 10000                                                             >> ${log} || exit 1
+${polymgr} list -pv "casket.kcx" > check.out                                                            >> ${log} || exit 1
+${polymgr} list -max 1000 -pv "casket.kcx" > check.out                                                  >> ${log} || exit 1
+${polytest} mapred "casket.kcx" 10000                                                                   >> ${log} || exit 1
+${polytest} mapred -xpm -xpr -xpf "casket.kcx" 10000                                                    >> ${log} || exit 1
+rm -rf casket*                                                                                          >> ${log} || exit 1
+${polytest} order -rnd "casket.kch#opts=s#bnum=256" 1000                                                >> ${log} || exit 1
+${polytest} order -rnd "casket.kct#opts=l#psiz=256" 1000                                                >> ${log} || exit 1
+${polytest} order -rnd "casket.kcd#opts=c#bnum=256" 500                                                 >> ${log} || exit 1
+${polytest} order -rnd "casket.kcf#opts=c#psiz=256" 500                                                 >> ${log} || exit 1
+${polytest} order -rnd "casket.kcx" 500                                                                 >> ${log} || exit 1
+${polymgr} merge -add "casket#type=kct" casket.kch casket.kct casket.kcd casket.kcf casket.kcx          >> ${log} || exit 1
 #rm -rf casket*                                                                                          >> ${log} || exit 1
 #${polytest} misc "casket#type=-"                                                                        >> ${log} || exit 1
 #${polytest} misc "casket#type=+"                                                                        >> ${log} || exit 1
